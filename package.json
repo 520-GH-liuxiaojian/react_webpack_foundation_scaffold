@@ -1,7 +1,7 @@
 {
   "name": "react_webpack_foundation_scaffold",
   "version": "1.0.0",
-  "description": "reat_ Webpack background management system initialization project",
+  "description": "react_webpack background management system initialization project",
   "main": "index.js",
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1"
@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/520-GH-liuxiaojian/react_webpack_foundation_scaffold/issues"
   },
-  "homepage": "https://github.com/520-GH-liuxiaojian/react_webpack_foundation_scaffold#readme"
+  "homepage": "https://github.com/520-GH-liuxiaojian/react_webpack_foundation_scaffold#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
 }
