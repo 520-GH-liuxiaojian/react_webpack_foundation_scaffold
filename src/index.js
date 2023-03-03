@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
-class Search extends React.Component {
+import './index.css'
+
+class Main extends React.Component {
     render() {
-        return <div>这是 search 组件</div>
+        return <div className="main-container">根组件</div>
     }
 }
 
-ReactDOM.render(<Search />, document.getElementById('root'))
+ReactDOM.render(<Main />, document.getElementById('root'))

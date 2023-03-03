@@ -5,3 +5,4 @@ dist
 
 # file
 /pnpm-lock.yaml
+/yarn.lock
