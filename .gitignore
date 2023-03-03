@@ -1,3 +1,7 @@
+# folder
+node_modules
+dist
+
 
 # file
 /pnpm-lock.yaml
