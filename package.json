@@ -1,0 +1,22 @@
+{
+  "name": "react_webpack_foundation_scaffold",
+  "version": "1.0.0",
+  "description": "reat_ Webpack background management system initialization project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/520-GH-liuxiaojian/react_webpack_foundation_scaffold.git"
+  },
+  "keywords": [
+    "123"
+  ],
+  "author": "xiaojianjian <oppor11520@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/520-GH-liuxiaojian/react_webpack_foundation_scaffold/issues"
+  },
+  "homepage": "https://github.com/520-GH-liuxiaojian/react_webpack_foundation_scaffold#readme"
+}
