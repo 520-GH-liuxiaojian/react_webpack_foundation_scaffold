@@ -80,8 +80,8 @@ module.exports = {
             {
                 test: /.css$/,
                 use: [
-                    // MiniCssExtractPlugin.loader,
-                    'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    // 'style-loader',
                     {
                         loader: "css-loader",
                         options: {
@@ -89,13 +89,14 @@ module.exports = {
                             importLoaders: 1
                         }
                     },
+                    'postcss-loader'
                 ]
             },
             {
                 test: /.less$/,
                 use: [
-                    'style-loader',
-                    // MiniCssExtractPlugin.loader,
+                    // 'style-loader',
+                    MiniCssExtractPlugin.loader,
                     {
                         loader: "css-loader",
                         options: {
@@ -103,13 +104,15 @@ module.exports = {
                             importLoaders: 1
                         }
                     },
-                    'less-loader'
+                    'less-loader',
+                    'postcss-loader'
                 ]
             },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
                     'sass-loader',
+                    'postcss-loader'
                 ],
             },
             {
