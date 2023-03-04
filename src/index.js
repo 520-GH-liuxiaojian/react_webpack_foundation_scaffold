@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom'
 
 import logo from './assets/images/react.png'
-import './index.less'
+import './index.scss'
 
 class Main extends React.Component {
     render() {

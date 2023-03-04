@@ -3,6 +3,7 @@
 const path = require('path')
 
 const { HotModuleReplacementPlugin } = require('webpack')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
     target: 'web',
@@ -19,6 +20,9 @@ module.exports = {
     // },
     plugins: [
         new HotModuleReplacementPlugin(),
+        new MiniCssExtractPlugin({
+            filename: `css/[name][contenthash:8].css`
+        })
     ],
     devServer: {
         static: {
@@ -67,15 +71,27 @@ module.exports = {
             {
                 test: /.css$/,
                 use: [
-                    'style-loader',
-                    'css-loader'
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            esModule: false,
+                            importLoaders: 1
+                        }
+                    },
                 ]
             },
             {
                 test: /.less$/,
                 use: [
-                    'style-loader',
-                    'css-loader',
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            esModule: false,
+                            importLoaders: 1
+                        }
+                    },
                     'less-loader'
                 ]
             },
