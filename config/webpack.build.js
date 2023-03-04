@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
 
 module.exports = {
     target: ['web', 'es5'],
@@ -14,7 +15,21 @@ module.exports = {
             filename: `css/[name][contenthash:8].css`
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new BundleAnalyzerPlugin()
+        new BundleAnalyzerPlugin(),
+        new ParallelUglifyPlugin({
+            uglifyJS: {
+                output: {
+                    beautify: false,
+                    comments: false,
+                },
+                compress: {
+                    // warnings: false,
+                    drop_console: true,
+                    collapse_vars: true,
+                    reduce_vars: true,
+                }
+            },
+        }),
     ],
     module: {
         rules: [
