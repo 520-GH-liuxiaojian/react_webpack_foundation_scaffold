@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
-import './amfe_flexible'
 import logo from './assets/images/react.png'
 import './index.scss'
 
