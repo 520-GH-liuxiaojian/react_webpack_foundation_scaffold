@@ -5,6 +5,7 @@ const path = require('path')
 const { HotModuleReplacementPlugin } = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebapckPlugin = require('css-minimizer-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = {
     target: 'web',
@@ -123,6 +124,7 @@ module.exports = {
         minimize: true,
         minimizer: [
             new CssMinimizerWebapckPlugin(),
+            new TerserPlugin()
         ]
     }
 }
