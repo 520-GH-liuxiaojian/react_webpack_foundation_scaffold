@@ -89,7 +89,15 @@ module.exports = {
                             importLoaders: 1
                         }
                     },
-                    'postcss-loader'
+                    'postcss-loader',
+                    {
+                        loader: 'px2rem-loader',
+                        // options here
+                        options: {
+                            remUni: 75,
+                            remPrecision: 8
+                        }
+                    }
                 ]
             },
             {
@@ -105,14 +113,22 @@ module.exports = {
                         }
                     },
                     'less-loader',
-                    'postcss-loader'
+                    'postcss-loader',
+                    {
+                        loader: 'px2rem-loader',
+                        // options here
+                        options: {
+                            remUni: 75,
+                            remPrecision: 8
+                        }
+                    }
                 ]
             },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
                     'sass-loader',
-                    'postcss-loader'
+                    'postcss-loader',
                 ],
             },
             {
