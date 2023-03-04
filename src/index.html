@@ -8,6 +8,8 @@
     <title>Document</title>
     <head>
         <script type="text/javascript"><%= require('raw-loader!babel-loader!../node_modules/amfe-flexible/index.min.js') %></script>
+        <!-- 动态 polyfill 根据浏览器信息自动加载预设代码 -->
+        <script type="text/javascript" src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     </head>
 </head>
 <body>
