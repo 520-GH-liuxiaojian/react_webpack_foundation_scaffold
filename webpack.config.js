@@ -37,12 +37,19 @@ module.exports = {
                 ],
             },
             {
-                test: /.(png|jpg|gif|jpeg|webp)$/,
-                use: 'file-loader'
-            },
-            {
                 test: /.(woff|woff2|eot|ttf|otf)$/,
                 use: 'file-loader',
+            },
+            {
+                test: /.(png|jpg|gif|jpeg|webp)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10240 // 超过 1oKb 的图片会被单独打包
+                        }
+                    }
+                ]
             },
         ]
     }
