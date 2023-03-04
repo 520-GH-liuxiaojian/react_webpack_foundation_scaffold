@@ -5,6 +5,7 @@ const path = require('path')
 const { HotModuleReplacementPlugin } = require('webpack')
 
 module.exports = {
+    target: ['web'],
     mode: 'production',
     watch: true, // 每次更新之后，需要手动刷新浏览器，没有办法实现文件更新之后，浏览器自动刷新
     watchOptions: {
@@ -57,6 +58,7 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: /node_modules/,
             },
+            // TODO 开发模式样式热更新失效
             {
                 test: /.css$/,
                 use: [

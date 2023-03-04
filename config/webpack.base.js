@@ -11,7 +11,6 @@ const webpackDevelopmentConfig = require('./webpack.dev')
 const webpackProductionConfig = require('./webpack.build')
 
 const webpackBaseConfig = {
-    target: 'web',
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '../src/index.html'),
