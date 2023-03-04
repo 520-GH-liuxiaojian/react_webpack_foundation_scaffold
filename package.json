@@ -4,8 +4,8 @@
   "description": "react_webpack background management system initialization project",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "pnpm build && webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.base.js",
+    "dev": "cross-env NODE_ENV=development pnpm build && webpack-dev-server",
     "test": "echo \\\"Error: no test specified\\\" && exit 1"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "autoprefixer": "^10.4.13",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "file-loader": "^6.2.0",
@@ -45,7 +46,8 @@
     "url-loader": "^4.1.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
