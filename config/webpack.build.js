@@ -1,5 +1,6 @@
 'use strict';
 
+const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
@@ -11,6 +12,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: `css/[name][contenthash:8].css`
         }),
+        new webpack.optimize.ModuleConcatenationPlugin()
     ],
     module: {
         rules: [
@@ -93,6 +95,16 @@ module.exports = {
         minimizer: [
             new CssMinimizerWebpackPlugin(),
             new TerserPlugin()
-        ]
+        ],
+        // splitChunks: {
+        //     minSize: 0, // 模块的大小，0 => 引用了模块就会分离
+        //     cacheGroups: {
+        //         commons: {
+        //             chunks: 'all',
+        //             name: 'common',
+        //             minChunks: 2 // 引用次数
+        //         }
+        //     }
+        // }
     }
 }
