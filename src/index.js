@@ -5,16 +5,33 @@ import {kebabCase} from 'lodash-es'
 import logo from './assets/images/react.png'
 import './index.scss'
 
-const array = [1];
-const other = _.concat(array, 2, [3], [[4]]);
-
 class Main extends React.Component {
 
+    constructor() {
+        super(...arguments);
+
+        this.state = {
+            Text: null
+        }
+    }
+
+    loadComponent() {
+        // 动态加在text.js，返回一个promise
+        import('./component/DynamicImport').then((Text) => {
+            console.log(Text);
+            this.setState({
+                Text: Text.default
+            });
+        })
+    }
+
     render() {
+        const {Text} = this.state
         return (
             <div className="main-container">
                 <div className="main-container-test">{kebabCase('__FOO_BAR__')}</div>
-                <img src={logo}/>
+                <img src={logo}  onClick={ this.loadComponent.bind(this) }/>
+                { Text ? <Text /> : null }
             </div>
         )
     }

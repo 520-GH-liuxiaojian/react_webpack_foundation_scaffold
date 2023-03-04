@@ -6,7 +6,7 @@ const { HotModuleReplacementPlugin } = require('webpack')
 
 module.exports = {
     target: ['web'],
-    mode: 'production',
+    mode: 'development',
     watch: true, // 每次更新之后，需要手动刷新浏览器，没有办法实现文件更新之后，浏览器自动刷新
     watchOptions: {
         // 默认是空，不监听文件或者文件夹，支持正则匹配

@@ -11,6 +11,7 @@ const webpackDevelopmentConfig = require('./webpack.dev')
 const webpackProductionConfig = require('./webpack.build')
 
 const webpackBaseConfig = {
+    devtool: 'source-map',
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '../src/index.html'),
