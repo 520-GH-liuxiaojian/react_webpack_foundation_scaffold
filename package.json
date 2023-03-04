@@ -41,6 +41,7 @@
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.7.2",
     "postcss-loader": "^7.0.2",
+    "purgecss-webpack-plugin": "^5.0.0",
     "px2rem-loader": "^0.1.9",
     "raw-loader": "0.5.1",
     "sass": "^1.58.3",

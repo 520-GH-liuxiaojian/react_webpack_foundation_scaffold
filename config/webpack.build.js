@@ -6,6 +6,7 @@ const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 
 module.exports = {
     target: ['web', 'es5'],
@@ -32,6 +33,10 @@ module.exports = {
         }),
         new webpack.DllReferencePlugin({
             manifest: require('../library/manifest.json')
+        }),
+        new PurgeCSSPlugin({
+            // 这里支持一个路径，可以使用 glob 匹配目录
+            paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`,  { nodir: true }),
         }),
     ],
     module: {

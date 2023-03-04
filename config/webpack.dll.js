@@ -1,8 +1,6 @@
 const path = require('path');
 
 const webpack = require('webpack');
-const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     resolve: {
