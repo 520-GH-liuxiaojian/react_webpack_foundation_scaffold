@@ -1,6 +1,8 @@
 'use strict';
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     mode: 'production',
@@ -12,8 +14,9 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /.js$/,
-                use: 'babel-loader'
+                test: /.jsx?$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
             },
             {
                 test: /.css$/,
@@ -82,6 +85,13 @@ module.exports = {
                     }
                 ]
             }
+        ]
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerWebpackPlugin(),
+            new TerserPlugin()
         ]
     }
 }

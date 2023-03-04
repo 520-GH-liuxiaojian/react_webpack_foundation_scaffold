@@ -3,10 +3,11 @@
 const path = require('path')
 
 const { merge } = require("webpack-merge")
-const CssMinimizerWebpackPlugin = require('css-minimizer-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+const webpackDevelopmentConfig = require('./webpack.dev')
+const webpackProductionConfig = require('./webpack.build')
 
 const webpackBaseConfig = {
     target: 'web',
@@ -21,20 +22,12 @@ const webpackBaseConfig = {
         path: path.join(__dirname, '../dist'),
         filename: 'javascript/[name][chunkhash:8].js'
     },
-    optimization: {
-        minimize: true,
-        minimizer: [
-            new CssMinimizerWebpackPlugin(),
-            new TerserPlugin()
-        ]
-    }
 }
 
-module.exports = (env, argv) => {
-    const isDev = argv.mode === 'development'
-    const webpackConfig = isDev ? require('./webpack.dev') : require('./webpack.build')
-
-    return merge(webpackBaseConfig, webpackConfig)
+if (process.env.NODE_ENV === "development"){
+    module.exports =merge(webpackBaseConfig, webpackDevelopmentConfig)
 }
+module.exports = merge(webpackBaseConfig, webpackProductionConfig)
+
 
 

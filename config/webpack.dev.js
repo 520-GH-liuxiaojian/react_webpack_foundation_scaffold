@@ -5,23 +5,23 @@ const path = require('path')
 const { HotModuleReplacementPlugin } = require('webpack')
 
 module.exports = {
-    mode: 'development',
-    watch: true, // 每次更新之后，需要手动刷新浏览器，没有办法实现文件更新之后，浏览器自动刷新
-    watchOptions: {
-        // 默认是空，不监听文件或者文件夹，支持正则匹配
-        // 不监听 node_modules 文件夹，性能会提升
-        ignored: /node_modules/,
-        // 监听到变化过后会等待 300ms 再去执行，默认 300ms
-        aggregateTimeout: 300,
-        // 判断文件是否发生变化，是通过不停的询问西系统指定的文件有没有变化实现的，默认是每秒 1000 次
-        poll: 1000
-    },
+    mode: 'production',
+    // watch: true, // 每次更新之后，需要手动刷新浏览器，没有办法实现文件更新之后，浏览器自动刷新
+    // watchOptions: {
+    //     // 默认是空，不监听文件或者文件夹，支持正则匹配
+    //     // 不监听 node_modules 文件夹，性能会提升
+    //     ignored: /node_modules/,
+    //     // 监听到变化过后会等待 300ms 再去执行，默认 300ms
+    //     aggregateTimeout: 300,
+    //     // 判断文件是否发生变化，是通过不停的询问西系统指定的文件有没有变化实现的，默认是每秒 1000 次
+    //     poll: 1000
+    // },
     plugins: [
         new HotModuleReplacementPlugin(),
     ],
     devServer: {
         static: {
-            directory: path.join(__dirname, "./dist"),
+            directory: path.join(__dirname, "../dist"),
             serveIndex: true, //中间件会在查看没有 index.html 文件的目录时生成目录列表
         },
         compress: true, //启动gzip压缩
@@ -53,16 +53,12 @@ module.exports = {
         // },
         // 更多属性请查看：https://webpack.js.org/configuration/dev-server
     },
-    entry: './src/index.js',
-    output: {
-        path: path.join(__dirname, 'dist'),
-        filename: 'javascript/[name][chunkhash:8].js'
-    },
     module: {
         rules: [
             {
-                test: /.js$/,
-                use: 'babel-loader'
+                test: /.jsx?$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/,
             },
             {
                 test: /.css$/,
