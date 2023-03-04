@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
+import logo from './assets/images/react.png'
 import './index.less'
 
 class Main extends React.Component {
     render() {
-        return <div className="main-container">根组件</div>
+        return (
+            <div className="main-container">
+                <img src={logo}/>
+            </div>
+        )
     }
 }
 
