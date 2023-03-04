@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 
-import './index.css'
+import './index.less'
 
 class Main extends React.Component {
     render() {
