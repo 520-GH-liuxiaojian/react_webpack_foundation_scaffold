@@ -4,6 +4,7 @@ const path = require('path')
 
 const { HotModuleReplacementPlugin } = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CssMinimizerWebapckPlugin = require('css-minimizer-webpack-plugin')
 
 module.exports = {
     target: 'web',
@@ -116,6 +117,12 @@ module.exports = {
                     }
                 ]
             },
+        ]
+    },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new CssMinimizerWebapckPlugin(),
         ]
     }
 }
