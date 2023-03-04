@@ -114,7 +114,10 @@ module.exports = {
         minimize: true,
         minimizer: [
             new CssMinimizerWebpackPlugin(),
-            new TerserPlugin()
+            new TerserPlugin({
+                cache: true,
+                parallel: true,
+            })
         ],
         // splitChunks: {
         //     minSize: 0, // 模块的大小，0 => 引用了模块就会分离

@@ -1,18 +1,25 @@
 const path = require('path');
 
 const webpack = require('webpack');
+const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
     resolve: {
+        alias: {
+            'react': path.resolve(__dirname, '../node_modules/react/umd/react.production.min'),
+            'react-dom': path.resolve(__dirname, '../node_modules/react-dom/umd/react-dom.production.min'),
+            'babel-polyfill': path.resolve(__dirname, '../node_modules/babel-polyfill/dist/polyfill.min'),
+        },
+        mainFields: ['main'],
         extensions: ['.js', '.jsx', '.json', '.less', '.css'],
-        modules: [__dirname, 'node_modules']
+        modules: [path.resolve(__dirname, '../node_modules')],
     },
     entry: {
         library: [
             'react',
             'react-dom',
-            'lodash',
-            'babel-polyfill'
+            'babel-polyfill',
         ]
     },
     output: {
@@ -26,5 +33,18 @@ module.exports = {
             path: path.resolve(__dirname, '../library/manifest.json')
         }),
     ],
-    mode: 'production'
+    mode: 'production',
+    optimization: {
+        minimize: true,
+        splitChunks: {
+            minSize: 0, // 模块的大小，0 => 引用了模块就会分离
+            cacheGroups: {
+                commons: {
+                    chunks: 'all',
+                    name: 'common',
+                    minChunks: 1 // 引用次数
+                }
+            }
+        }
+    }
 }

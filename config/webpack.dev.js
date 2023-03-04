@@ -55,8 +55,16 @@ module.exports = {
         rules: [
             {
                 test: /.jsx?$/,
-                loader: 'babel-loader',
                 exclude: /node_modules/,
+                include: path.join(__dirname, "../src"),
+                use: [
+                    {
+                        loader: 'babel-loader',
+                        options: {
+                            cacheDirectory: true //启动babel缓存，编译过的模块不会再重新编译，提高打包速度
+                        },
+                    }
+                ],
             },
             // TODO 开发模式样式热更新失效
             {
