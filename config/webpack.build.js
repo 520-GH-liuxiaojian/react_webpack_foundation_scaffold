@@ -30,6 +30,9 @@ module.exports = {
                 }
             },
         }),
+        new webpack.DllReferencePlugin({
+            manifest: require('../library/manifest.json')
+        }),
     ],
     module: {
         rules: [

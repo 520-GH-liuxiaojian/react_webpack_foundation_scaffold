@@ -4,8 +4,10 @@
   "description": "react_webpack background management system initialization project",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.base.js",
+    "build:business": "cross-env NODE_ENV=production webpack --config ./config/webpack.base.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack.base.js --open --hot --port 9000 --compress --progress",
+    "build:dll": "cross-env NODE_ENV=production webpack --config ./config/webpack.dll.js",
+    "build": "pnpm run build:dll && pnpm run build:business",
     "test": "echo \\\"Error: no test specified\\\" && exit 1"
   },
   "repository": {
