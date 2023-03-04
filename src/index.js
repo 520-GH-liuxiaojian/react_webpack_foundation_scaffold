@@ -8,6 +8,7 @@ class Main extends React.Component {
     render() {
         return (
             <div className="main-container">
+                <div className="main-container-test">测试代码是否正常生成</div>
                 <img src={logo}/>
             </div>
         )
