@@ -6,6 +6,7 @@ const { HotModuleReplacementPlugin } = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebapckPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     target: 'web',
@@ -24,6 +25,9 @@ module.exports = {
         new HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
             filename: `css/[name][contenthash:8].css`
+        }),
+        new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/index.html'),
         })
     ],
     devServer: {
