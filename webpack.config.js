@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebapckPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
     target: 'web',
@@ -28,7 +29,8 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src/index.html'),
-        })
+        }),
+        new CleanWebpackPlugin(),
     ],
     devServer: {
         static: {
