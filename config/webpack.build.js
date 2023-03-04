@@ -1,12 +1,15 @@
 'use strict';
 
+const path = require('path')
+const glob = require('glob')
+
 const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+// const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin');
-const PurgeCSSPlugin = require('purgecss-webpack-plugin');
+const {PurgeCSSPlugin} = require('purgecss-webpack-plugin');
 
 module.exports = {
     target: ['web', 'es5'],
@@ -16,7 +19,7 @@ module.exports = {
             filename: `css/[name][contenthash:8].css`
         }),
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
         new ParallelUglifyPlugin({
             uglifyJS: {
                 output: {
@@ -31,12 +34,12 @@ module.exports = {
                 }
             },
         }),
-        new webpack.DllReferencePlugin({
-            manifest: require('../library/manifest.json')
-        }),
+        // new webpack.DllReferencePlugin({
+        //     manifest: require('../library/manifest.json')
+        // }),
         new PurgeCSSPlugin({
             // 这里支持一个路径，可以使用 glob 匹配目录
-            paths: glob.sync(`${path.join(__dirname, 'src')}/**/*`,  { nodir: true }),
+            paths: glob.sync(`${path.join(__dirname, '../src')}/**/*`,  { nodir: true }),
         }),
     ],
     module: {
@@ -75,7 +78,7 @@ module.exports = {
                     {
                         loader: "css-loader",
                         options: {
-                            esModule: false,
+                            esModule: true,
                             importLoaders: 1
                         }
                     },
@@ -120,7 +123,6 @@ module.exports = {
         minimizer: [
             new CssMinimizerWebpackPlugin(),
             new TerserPlugin({
-                cache: true,
                 parallel: true,
             })
         ],
