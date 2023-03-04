@@ -56,7 +56,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: '[name].js'
+        filename: 'javascript/[name][chunkhash:8].js'
     },
     module: {
         rules: [
