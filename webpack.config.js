@@ -38,7 +38,8 @@ module.exports = {
         compress: true, //启动gzip压缩
         open: true, // 自动打开浏览器
         port: 9000, //端口号
-        // hot: true,
+        hot: true,
+        // progress: true, //显示打包进度
         // proxy: {
         //     "/api": {
         //         // 目标地址
@@ -77,7 +78,8 @@ module.exports = {
             {
                 test: /.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    // MiniCssExtractPlugin.loader,
+                    'style-loader',
                     {
                         loader: "css-loader",
                         options: {
@@ -90,7 +92,8 @@ module.exports = {
             {
                 test: /.less$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    'style-loader',
+                    // MiniCssExtractPlugin.loader,
                     {
                         loader: "css-loader",
                         options: {
