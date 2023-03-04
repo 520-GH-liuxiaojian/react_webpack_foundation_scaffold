@@ -17,25 +17,20 @@ const webpackBaseConfig = {
             template: path.join(__dirname, '../src/index.html'),
         }),
         new CleanWebpackPlugin(),
-        new HtmlWebpackExternalsPlugin({
-            externals: [
-                {
-                    module: 'react',
-                    entry: 'https://now8.gtimg.com/now/lib/16.8.6/react.min.js?_bid=4042',
-                    global: 'React',
-                },
-                {
-                    module: 'react-dom',
-                    entry: 'https://now8.gtimg.com/now/lib/16.8.6/react-dom.min.js?_bid=4042',
-                    global: 'ReactDOM',
-                },
-                // {
-                //     module: 'lodash',
-                //     entry: 'https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js',
-                //     global: 'lodash',
-                // }
-            ],
-        }),
+        // new HtmlWebpackExternalsPlugin({
+        //     externals: [
+        //         {
+        //             module: 'react',
+        //             entry: 'https://now8.gtimg.com/now/lib/16.8.6/react.min.js?_bid=4042',
+        //             global: 'React',
+        //         },
+        //         {
+        //             module: 'react-dom',
+        //             entry: 'https://now8.gtimg.com/now/lib/16.8.6/react-dom.min.js?_bid=4042',
+        //             global: 'ReactDOM',
+        //         },
+        //     ],
+        // }),
     ],
     entry: path.join(__dirname, '../src/index.js'),
     output: {

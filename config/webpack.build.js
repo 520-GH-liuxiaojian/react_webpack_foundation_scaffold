@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
 module.exports = {
     target: ['web', 'es5'],
@@ -12,7 +13,8 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: `css/[name][contenthash:8].css`
         }),
-        new webpack.optimize.ModuleConcatenationPlugin()
+        new webpack.optimize.ModuleConcatenationPlugin(),
+        new BundleAnalyzerPlugin()
     ],
     module: {
         rules: [
